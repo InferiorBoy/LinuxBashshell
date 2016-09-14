@@ -36,7 +36,6 @@ start() {
     return $retval
 }
 
-
 stop() {
     status
         if [[ $? -eq 1 ]]; then
@@ -51,7 +50,6 @@ stop() {
     return $retval
 }
 
-
 restart() {
     stop
         sleep 1
@@ -60,7 +58,6 @@ restart() {
     return $retval
 }
 
-
 reload() {
     echo -n $"Reloading $NGINX_NAME: "
         killproc $NGINX_PROG -HUP
@@ -68,7 +65,6 @@ reload() {
         retval=$?
     return $retval
 }
-
 
 status() {
     netstat -anpt | grep "/nginx" | awk '{print $6}' &> /dev/null
@@ -82,7 +78,6 @@ status() {
     return 1
 }
 
-
 _status() {
     status
         if [[ $? -eq 0 ]]; then
@@ -93,13 +88,11 @@ _status() {
         fi
 }
 
-
 test() {
     $NGINX_PROG -t -c $NGINX_CONF_FILE
         retval=$?
     return $retval
 }
-
 
 case "$1" in
     start)
