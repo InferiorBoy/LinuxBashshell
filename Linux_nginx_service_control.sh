@@ -30,8 +30,8 @@ start() {
         fi
     echo -n $"Starting $NGINX_NAME: "
         daemon $NGINX_PROG -c $NGINX_CONF_FILE
-        echo
         retval=$?
+        echo
     [ $retval -eq 0 ] && touch $NGINX_LOCK_FILE
     return $retval
 }
@@ -44,8 +44,8 @@ stop() {
         fi
     echo -n $"Stoping $NGINX_NAME: "
         killproc $NGINX_PROG
-        echo
         retval=$?
+        echo
     [ $retval -eq 0 ] && rm -f $NGINX_LOCK_FILE
     return $retval
 }
@@ -61,8 +61,8 @@ restart() {
 reload() {
     echo -n $"Reloading $NGINX_NAME: "
         killproc $NGINX_PROG -HUP
-        echo
         retval=$?
+        echo
     return $retval
 }
 
